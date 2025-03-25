@@ -36,7 +36,7 @@ def fill_table():
             generator.last_name(),
             generator.first_name(),
             generator.random_int(min=10, max=80),
-            f'a{randint(1, 1000)}{generator.free_email()}',
+            f'a{randint(1, 8000)}{generator.free_email()}',
             generator.phone_number(),
             generator.country(),
             generator.city(),
@@ -50,7 +50,7 @@ def fill_table():
         conn.commit()
     return
 
-def x():
+def q():
     with sqlite3.connect('users.db') as conn:
         cursor = conn.cursor()
         cursor.execute("""
@@ -58,8 +58,16 @@ def x():
         """)
         return cursor.fetchall()
 
+def w():
+    with sqlite3.connect('users.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+        SELECT country, time_in_app FROM Users 
+        """)
+        return cursor.fetchall()
+
 
 if __name__ == '__main__':
-    create_table()
+    #create_table()
     #fill_table()
-    print(x())
+    print(q())
